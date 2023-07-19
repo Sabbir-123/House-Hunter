@@ -1,20 +1,39 @@
-import { useState } from 'react';
+/* eslint-disable no-unused-vars */
+import { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { AuthContext } from '../../Components/Context/AuthContext';
+import axios from 'axios';
 
 const Login = () => {
   const { register, formState: { errors }, handleSubmit } = useForm();
   const [loginError, setLoginError] = useState('');
-  const [loginUserEmail, setLoginUserEmail] = useState('');
+  const [credentials, setCredentials] = useState({
+    email: '' || undefined,
+    password: '' | undefined
+  });
+
+  const {loading, error, dispatch} = useContext(AuthContext)
   const location = useLocation();
   const navigate = useNavigate();
 
-  const from = location.state?.from?.pathname || '/';
+  // const from = location.state?.from?.pathname || '/';
 
-  const handleLogin = data => {
-    console.log(data);
-    setLoginError('');
-  }
+  const handleLogin = async (data) => {
+    dispatch({ type: "LOGIN_START" });
+    try {
+      const res = await axios.post(
+        "https://house-hunter-server-phi.vercel.app/api/v1/auth/login",
+        data
+      );
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+      navigate("/dashboard");
+    } catch (err) {
+      const errorData = err.response?.data || "An error occurred";
+      dispatch({ type: "LOGIN_FAILURE", payload: errorData });
+    }
+  };
+  
 
   return (
     <div className="h-screen flex justify-center items-center">
@@ -28,6 +47,7 @@ const Login = () => {
             <input
               type="text"
               {...register("email", { required: "Email Address is required" })}
+            
               className="border border-gray-300 rounded-md p-2 w-full max-w-xs"
             />
             {errors.email && <p className="text-red-600">{errors.email?.message}</p>}
@@ -41,6 +61,7 @@ const Login = () => {
                 required: "Password is required",
                 minLength: { value: 6, message: 'Password must be 6 characters or longer' }
               })}
+      
               className="border border-gray-300 rounded-md p-2 w-full max-w-xs"
             />
             <label className="label"> <span className="label-text">Forget Password?</span></label>

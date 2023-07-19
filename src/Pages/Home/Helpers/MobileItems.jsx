@@ -12,7 +12,7 @@ const MobileItems = () => {
         </h2>
       </div>
       <ul className="bg-white flex gap-[20px]  border-[#DAD9D9] lg:flex-row flex-col">
-        {menuData.map((menuItem, index) => (
+        {menuData?.map((menuItem, index) => (
           <MobileMenuItem key={index} menuItem={menuItem} />
         ))}
       </ul>

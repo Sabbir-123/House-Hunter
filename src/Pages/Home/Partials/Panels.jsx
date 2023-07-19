@@ -16,7 +16,7 @@ const Panel = (props) => {
 
       <div className="flex items-start flex-wrap gap-12 pb-8 justify-start ">
         {/* section title */}
-        {sections.map((item, i) => (
+        {sections?.map((item, i) => (
           <div className="flex flex-col" key={i}>
             <div className="w-full border-b border-[#9A9A9A] pb-3">
               <h3 className="lg:text-[24px] text-[18px] font-[600] text-black">
@@ -25,7 +25,7 @@ const Panel = (props) => {
             </div>
             {/* single box */}
             <div className="flex lg:flex-row flex-col  gap-5">
-              {item.data.map((item, i) => (
+              {item?.data?.map((item, i) => (
                 <div className="flex flex-col pt-3" key={i}>
                   <div className="flex flex-col pb-3">
                     <h3 className="text-[18px] font-[600] text-[#1A1919]">
@@ -37,7 +37,7 @@ const Panel = (props) => {
                   </div>
                   {/* options */}
                   <ul className="flex flex-col gap-1">
-                    {item.options.map((item, i) => (
+                    {item?.options?.map((item, i) => (
                       <li
                         key={i}
                         className="text-[16px] font-[400] text-[#535353]"

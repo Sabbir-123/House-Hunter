@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import SignUpPic from '../../assets/images/SignUp.svg';
 import Illustration from '../../assets/images/hero-illustration.svg';
+import axios from 'axios';
 
 export default function SignUp() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [signUpError, setSignUpError] = useState('');
-//   const navigate = useNavigate();
 
-  const handleSignUp = (data) => {
-    console.log(data);
+  const handleSignUp = async (data) => {
+    try {
+      const response = await axios.post('https://house-hunter-server-phi.vercel.app/api/v1/auth/signup', data);
+      console.log(response.data); // You can handle the response as needed
+    } catch (error) {
+      setSignUpError(error.response?.data?.message || 'An error occurred during signup.');
+    }
   };
 
   return (
