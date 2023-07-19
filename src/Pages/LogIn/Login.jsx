@@ -79,7 +79,7 @@ const Login = () => {
           </div>
         </form>
 
-        <p>You are new here? <Link className="text-gray-500" to="/register">Create new Account</Link></p>
+        <p>You are new here? <Link className="text-gray-500" to="/signup">Create new Account</Link></p>
       </div>
     </div>
   );
