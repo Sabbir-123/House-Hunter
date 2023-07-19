@@ -10,8 +10,18 @@ export default function SignUp() {
   const [signUpError, setSignUpError] = useState('');
 
   const handleSignUp = async (data) => {
+    const userData = {
+      user: {
+        password: data.password,
+        role: data.role,
+        name: data.name,
+        email: data.email,
+        phoneNumber: data.phoneNumber
+      }
+    };
+
     try {
-      const response = await axios.post('https://house-hunter-server-phi.vercel.app/api/v1/auth/signup', data);
+      const response = await axios.post('https://house-hunter-server-phi.vercel.app/api/v1/auth/signup', userData);
       console.log(response.data); // You can handle the response as needed
     } catch (error) {
       setSignUpError(error.response?.data?.message || 'An error occurred during signup.');
