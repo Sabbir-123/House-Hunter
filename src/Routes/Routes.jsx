@@ -10,6 +10,11 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 import MyBookings from "../Pages/Dashboard/Renters/MyBookings";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
 import DashHome from "../Pages/Dashboard/DashHome/DashHome";
+import MyHouses from "../Pages/Dashboard/Owner/MyHouses";
+import BookingPerson from "../Pages/Dashboard/Owner/BookingPerson";
+import AddHouses from "../Pages/Dashboard/Owner/AddHouses";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
+
 
 const routes = createBrowserRouter([
     {
@@ -36,7 +41,7 @@ const routes = createBrowserRouter([
         ,
         {
           path: `/houses/:id`,
-          element: <BookingModal/>,
+          element: <PrivateRoute><BookingModal/></PrivateRoute>,
           loader: ({params})=>fetch(`https://house-hunter-server-phi.vercel.app/api/v1/owners/signleHouse/${params.id}`)
         }
         
@@ -44,27 +49,31 @@ const routes = createBrowserRouter([
       
     },{
       path: '/dashboard',
-      element: <Dashboard/>,
+      element:<PrivateRoute> <Dashboard/></PrivateRoute>,
       errorElement: <ErrorPage/>,
       children: [
           {
           path: '/dashboard',
-          element: <DashHome/>
+          element:<PrivateRoute> <DashHome/></PrivateRoute>
+      },
+          {
+          path: '/dashboard/myBookings',
+          element: <PrivateRoute><MyBookings/></PrivateRoute>
+      },
+          {
+          path: '/dashboard/addhouse',
+          element: <PrivateRoute><AddHouses/></PrivateRoute>
+      },
+          {
+          path: '/dashboard/myHouses',
+          element:<PrivateRoute><MyHouses/></PrivateRoute> 
       },
           {
           path: '/dashboard/bookings',
-          element: <MyBookings/>
+          element: <BookingPerson/>
       },
       
-      //     {
-      //     path: '/dashboard/report',
-      //     element: <AdminRoute><ShowReport></ShowReport></AdminRoute>
-      // },
-      //     {
-      //     path: '/dashboard/addHouse',
-      //     element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
-      // }
-  
+    
   ]
   }
     

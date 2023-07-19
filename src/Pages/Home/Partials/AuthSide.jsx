@@ -8,6 +8,7 @@ const AuthSide = () => {
 
   const handleLogout = () => {
     dispatch({ type: 'LOGOUT' });
+    localStorage.removeItem('user');
   };
 
   return (

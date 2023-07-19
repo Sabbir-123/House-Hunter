@@ -7,7 +7,7 @@ const MobileAuthSide = () => {
 
   const handleLogout = () => {
     dispatch({ type: 'LOGOUT' });
-    // Add any additional logic here, such as clearing localStorage, redirecting, etc.
+    localStorage.removeItem('user');
   };
 
   return (

@@ -9,8 +9,8 @@ const Login = () => {
   const { register, formState: { errors }, handleSubmit } = useForm();
   const [loginError, setLoginError] = useState('');
   const [credentials, setCredentials] = useState({
-    email: '' || undefined,
-    password: '' | undefined
+    email: '' ,
+    password: '' 
   });
 
   const {loading, error, dispatch} = useContext(AuthContext)

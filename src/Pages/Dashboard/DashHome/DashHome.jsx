@@ -11,12 +11,14 @@ export default function DashHome() {
   const decodedToken = decodeToken(token);
   console.log(decodedToken)
   const role = decodedToken?.payload?.role;
-  console.log(role)
+  const email = decodedToken?.payload?.userEmail;
+  console.log(role, email)
   
 
   return (
     <div className="h-screen">
       <h1 className="text-6xl text-center">Welcome to DashBoard</h1>
+
       {role === 'renter' && (
         <div className="grid justify-center pt-5">
           <Link to={"/dashboard/myBookings"}>
@@ -36,11 +38,6 @@ export default function DashHome() {
           <Link to={"/dashboard/addhouse"}>
             <Button className="md:text-lg" sizeClass="px-[12px] py-[8px]">
               Add New House
-            </Button>
-          </Link>
-          <Link to={"/dashboard/bookingPerson"}>
-            <Button className="md:text-lg" sizeClass="px-[12px] py-[8px]">
-              Bookings
             </Button>
           </Link>
         </div>
