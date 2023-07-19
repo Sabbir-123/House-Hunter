@@ -3,18 +3,14 @@ import classNames from "classnames";
 import { icons } from "../lib/icons";
 export const menuData = [
     {
-        to: "/allbooks",
-      label: "All Books",
+        to: "/dashboard",
+      label: "DashBoard",
       icon: true,
     },
     {
-      to: "/about",
-      label: "About us",
-    },
-    {
-      to: "/explore",
-      label: "Explore",
-    },
+      to: "/",
+      label: "Home",
+    }
   ];
 
   export const cx = classNames;
@@ -22,7 +18,7 @@ export const menuData = [
  
     
     getStarteds: {
-        title: "Get started with Book Store",
+        title: "Booking started with House Hunter",
         linkOne: "Start a free acccount",
         icon: icons.arrowRight,
         linkTwo: "Talk to our sales team",

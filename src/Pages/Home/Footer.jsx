@@ -19,6 +19,7 @@ export default function Footer() {
               >
                 <div className="max-w-[140px]">
                   <img src={logo} width={40} height={40} alt="brand" />
+                  <h1 className="text-xl font-nycd text-indigo-500">House Hunter</h1>
                 </div>
               </Link>
             </div>

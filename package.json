@@ -51,6 +51,7 @@
     "@radix-ui/react-tooltip": "^1.0.6",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/line-clamp": "^0.4.4",
+    "@tanstack/react-query": "^4.29.25",
     "axios": "^1.4.0",
     "class-variance-authority": "^0.7.0",
     "classnames": "^2.3.2",
@@ -66,17 +67,21 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.2",
     "react-icons": "^4.10.1",
+    "react-photo-view": "^1.2.3",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.14.2",
     "react-scroll": "^1.8.9",
+    "sweetalert": "^2.1.2",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.6"
   },
   "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^4.29.25",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "@vitejs/plugin-react": "^4.0.1",
     "autoprefixer": "^10.4.14",
+    "daisyui": "^3.2.1",
     "eslint": "^8.44.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
@@ -85,5 +90,6 @@
     "prettier": "^3.0.0",
     "tailwindcss": "^3.3.3",
     "vite": "^4.4.0"
-  }
+  },
+  "proxy": "http://localhost:7000/api/v1"
 }
